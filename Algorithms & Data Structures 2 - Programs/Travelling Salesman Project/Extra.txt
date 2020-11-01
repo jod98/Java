@@ -1,0 +1,34 @@
+	//Loop through all distances from current location to next and find smallest
+		int currentVal = 607;
+		int nextVal = currentVal - 100;
+	
+		double results[] = new double[1000];
+		double smallest = 0;
+		//int i = 0;
+		for(int i=0; i<results.length; i++)
+		{
+			university current = arr[currentVal];
+			university next = arr[nextVal];
+			if(next.rank >= current.rank-100 && next.rank <= current.rank+100 && next.rank!= current.rank)
+			{
+				for(int z=0; z<results.length; z++)
+				{
+					results[z] = haversine(current, next);
+				}
+				for(int j=0; j<results.length; j++)
+				{
+	         if (results[j] > smallest) 
+	         {
+	         	smallest = results[j];
+	         }
+				}
+			}
+			nextVal++;
+		}
+		
+		for(int k=0; k<results.length; k++)
+		{
+			System.out.print(results[k] + " ");
+		}
+		
+		System.out.println(smallest);
